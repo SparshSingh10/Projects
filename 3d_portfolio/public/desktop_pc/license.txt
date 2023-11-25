@@ -1,0 +1,11 @@
+Model Information:
+* title:	Avengers - Endgame
+* source:	https://sketchfab.com/3d-models/avengers-endgame-df0ab2d8550b430e96819e1d3967bdcf
+* author:	Veysel Gök (https://sketchfab.com/veysel.gok.vg)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Avengers - Endgame" (https://sketchfab.com/3d-models/avengers-endgame-df0ab2d8550b430e96819e1d3967bdcf) by Veysel Gök (https://sketchfab.com/veysel.gok.vg) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
