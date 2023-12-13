@@ -117,7 +117,7 @@
             <% for(let review of foundGun.reviews){ %>
              <div class="my-lg-4 ">
                  <!-- <h1>Rating: review.rating </h1> -->
-                 <h3><%= foundGun.name%></h3>
+                 <h3><%= currentUser.username%></h3>
                  <p class="starability-result" data-rating="<%=review.rating%>">
                    <%=review.rating%>
                  </p>

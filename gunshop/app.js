@@ -18,7 +18,7 @@ const auth=require('./routes/auth');
 
 mongoose.connect('mongodb+srv://sparshgla:sparshgla@cluster0.y6ksh16.mongodb.net/gunshop?retryWrites=true&w=majority')
 .then(()=>{
-    console.log('Db connected')
+    console.log('Db connected');
 })
 .catch((err)=>{
     console.log(err);
