@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate') %>
+<%- include('./partials/navbar') %>
+
+<div class="row mx-5 my-5">
+    <div class="col-md-6 mx-auto">
+
+        <h1>Login page</h1>
+        <form action="/login" method="post" class="mt-4">
+
+            <div class="mb-3">
+                <label for="naam" class="form-label">Username</label>
+                <input type="text" name="username" id="naam" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="pass" class="form-label">Password</label>
+                <input type="password" name="password" id="pass" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <p class="fw-light mt-2">Don't have an account? <a href="/register">Sign Up</a></p>
+        </form>
+    </div>
+</div>

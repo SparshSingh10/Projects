@@ -1,0 +1,30 @@
+:root{
+    --main-color: #ff0000;
+    box-sizing: border-box;
+}
+main{
+    box-sizing: border-box;
+    margin-top: 5.5rem;
+    /* margin: 0;
+    padding: 0; */
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.img{
+    height: 200px;
+    width: 100%;
+
+}
+
+.product-card .btnn{
+    background-color: var(--main-color) ;
+}
+
+.height-300{
+    height: 350px;
+}

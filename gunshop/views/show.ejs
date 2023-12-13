@@ -1,0 +1,136 @@
+<% layout('layouts/boilerplate') %>
+<%- include('./partials/navbar') %>
+
+<style>
+    .full-width-image {
+        width: 100vw; /* 100% of viewport width */
+        height: 100vh; /* 100% of viewport height */
+        object-fit: cover;
+    }
+
+    .details-container {
+        position: relative;
+        overflow: hidden; /* Hide any overflow content */
+        height: 100vh;
+    }
+
+    .details-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .details-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center; 
+        font-family: 'Arial', sans-serif; 
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        color: #e39a09;
+        font-size: 25px; /* Adjust the font size */
+        font-weight: bold; /* Make the font bold */
+        margin-bottom: 10px;
+    }
+
+    .details-container:hover .details-overlay {
+        opacity: 1;
+    }
+
+    .details-container:hover .details-text {
+        opacity: 1;
+    }
+    .bottom-buttons {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+    }
+
+    .riv:hover, .riv:hover * {
+    color: #e39a09;
+}
+
+
+   
+</style>
+
+<div class="container-fluid details-container p-0 "> <!-- Use container-fluid for full-width container -->
+    <img src="<%= foundGun.img %>" alt="" class="full-width-image">
+    <div class="details-overlay"></div>
+    <div class="details-text">
+        <h2 class="display-4"><%= foundGun.name %></h2>
+        <h2><%= foundGun.price %></h2>
+        <h2><%= foundGun.type %></h2>
+        <h2><%= foundGun.isLegal ? 'Legal' : 'Not Legal' %></h2>
+    </div>
+    <div class="bottom-buttons">
+        <button href="/guns/<%= foundGun.id %>/edit" class="btn btn-outline-info btn-sm p-3 ">Edit</button>
+        <form action="" method="post">
+            <button class="btn btn-danger btn-sm p-3">Delete</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="riv m-0 d-flex flex-column align-items-center " style="background-color: #212120;color: wheat;">
+    <div class="col-lg-4">
+        <h2 class="display-5">Leave your review</h2>
+        <form action="/guns/<%= foundGun._id %>/review" method="POST">
+            <div class="mb-3">
+                <label class="form-label" for="stars">Rating: </label>
+                
+                <fieldset class="starability-basic">
+                    <legend>First rating:</legend>
+                    <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="rating" value="1" />
+                    <label for="first-rate1" title="Terrible"></label>
+                    <input type="radio" id="first-rate2" name="rating" value="2" />
+                    <label for="first-rate2" title="Not good"></label>
+                    <input type="radio" id="first-rate3" name="rating" value="3" />
+                    <label for="first-rate3" title="Average"></label>
+                    <input type="radio" id="first-rate4" name="rating" value="4" />
+                    <label for="first-rate4" title="Very good"></label>
+                    <input type="radio" id="first-rate5" name="rating" value="5" />
+                    <label for="first-rate5" title="Amazing"></label>
+                  </fieldset>
+
+                <!-- <input class="form-control" type="range" min="0" max="5" id="stars" name="rating"> -->
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="comment">Comment: </label>
+                <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+            </div>
+            <button class="btn btn-sm btn-success">Submit</button>
+        </form>
+
+        <div class="my-1">
+            <% for(let review of foundGun.reviews){ %>
+             <div class="my-lg-4 ">
+                 <!-- <h1>Rating: review.rating </h1> -->
+                 <h3><%= foundGun.name%></h3>
+                 <p class="starability-result" data-rating="<%=review.rating%>">
+                   <%=review.rating%>
+                 </p>
+                 <p><%=review.comment%> </p>
+             </div>
+            <% } %>
+         </div>
+
+
+    </div>
+</div>
+
+
+
+
+

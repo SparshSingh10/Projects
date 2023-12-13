@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') %>
+<%- include('./partials/navbar') %>
+
+<!-- <style>
+    .fixed-image-height {
+        max-height: 200px; /* Set the maximum desired height */
+        object-fit: cover; /* Ensure the image covers the entire container */
+    }
+    .card {
+        width: 100%; /* or set a fixed width */
+        margin-bottom: 20px; /* adjust margin as needed */
+        overflow: hidden; /* hide any overflow content */
+    }
+    .card:hover {
+        transform: scale(1.05); /* Increase the size on hover */
+        transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow on hover */
+        filter: brightness(0.8);
+    }
+</style> -->
+
+<div class="bg-dark d-flex pt-lg-5  flex-wrap justify-content-around ">
+    <% for(let item of guns){ %>
+        <div class="card m-3  " style="width: 18rem; margin-bottom: 20px;">
+            <img src="<%=item.img%>" class="card-img-top fixed-image-height" alt="Card Image">
+            <div class="card-body" style="background-color: rgb(81, 74, 0); color: white;">
+                <h5 class="card-title"><%=item.name%></h5>
+                <h5 class="card-title"><%=item.price%></h5>
+                <h5 class="card-title"><%=item.type%></h5>
+                <h2><%= item.isLegal ? 'Legal' : 'Not Legal' %></h2>
+            </div>
+            <div class="card-footer bt d-flex justify-content-between">
+                <form action="/guns/<%=item._id%>?_method=DELETE" method="post">
+                    <button class="btn btn-danger btn-sm" >Delete</button>
+                </form>
+                <a href="/guns/<%= item.id %>/edit" class="btn btn-outline-info btn-sm">Edit</a>
+                <a class="btn btn-outline-info btn-sm" href="/guns/<%= item.id %>">View</a>
+            </div>
+        </div>
+    <% } %>
+</div>
+
