@@ -1,6 +1,7 @@
 <% layout('layouts/boilerplate') %>
 <%- include('./partials/navbar') %>
 
+
 <style>
     .full-width-image {
         width: 100vw; /* 100% of viewport width */
@@ -13,7 +14,7 @@
         overflow: hidden; /* Hide any overflow content */
         height: 100vh;
     }
-
+    
     .details-overlay {
         position: absolute;
         top: 0;
@@ -43,7 +44,7 @@
     .details-container:hover .details-overlay {
         opacity: 1;
     }
-
+    
     .details-container:hover .details-text {
         opacity: 1;
     }
@@ -64,23 +65,29 @@
    
 </style>
 
-<div class="container-fluid details-container p-0 "> <!-- Use container-fluid for full-width container -->
+
+<div class="container-fluid details-container p-0 "> 
+    
+       <!-- Use container-fluid for full-width container -->
     <img src="<%= foundGun.img %>" alt="" class="full-width-image">
     <div class="details-overlay"></div>
     <div class="details-text">
+        
         <h2 class="display-4"><%= foundGun.name %></h2>
         <h2><%= foundGun.price %></h2>
         <h2><%= foundGun.type %></h2>
         <h2><%= foundGun.isLegal ? 'Legal' : 'Not Legal' %></h2>
     </div>
     <div class="bottom-buttons">
-        <button href="/guns/<%= foundGun.id %>/edit" class="btn btn-outline-info btn-sm p-3 ">Edit</button>
+        <button href="/guns/<%=foundGun.id %>/edit" class="btn btn-outline-info btn-sm p-3 ">Edit</button>
         <form action="" method="post">
             <button class="btn btn-danger btn-sm p-3">Delete</button>
         </form>
     </div>
 </div>
 
+
+<%-include('./partials/flash')%>
 
 <div class="riv m-0 d-flex flex-column align-items-center " style="background-color: #212120;color: wheat;">
     <div class="col-lg-4">

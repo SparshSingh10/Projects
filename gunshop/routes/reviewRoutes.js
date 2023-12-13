@@ -17,6 +17,7 @@ router.post('/guns/:gunId/review' , async(req,res)=>{
         
         await review.save();
         await gun.save();
+        req.flash('success' , 'Review added successfully');
         res.redirect(`/guns/${gunId}`)
 })
 

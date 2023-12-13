@@ -11,6 +11,8 @@ const User = require('./models/User');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
+const flash = require('connect-flash');
+
 const reviewRoutes = require("./routes/reviewRoutes");
 const guns=require('./routes/guns');
 const auth=require('./routes/auth');
@@ -42,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
   app.use(methodOverride('_method')); //method override
   app.set('views', path.join(__dirname, 'views'));
   app.use(session(configSession));
+  app.use(flash());
 // seedDB();
 
 app.use(passport.initialize());

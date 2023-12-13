@@ -4,7 +4,7 @@ const router = express.Router();
 const passport = require('passport');
 
 router.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login',{success: req.flash('success')});
 });
 
 router.get('/register', (req, res) => {
@@ -23,9 +23,6 @@ router.post('/register', async (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
-    res.render('login');
-});
 
 router.post('/login', passport.authenticate('local', { 
     failureRedirect: '/login', 
@@ -33,6 +30,7 @@ router.post('/login', passport.authenticate('local', {
 }), (req, res) => {
     console.log("login ho gaya");
     console.log(req.user);
+    req.flash('success', `Welcome back ${req.user.username}`);
     res.redirect('/guns');
 });
 

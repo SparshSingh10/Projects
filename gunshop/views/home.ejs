@@ -29,12 +29,13 @@
         height: 1.75rem;
         padding: 5px;
         text-align: center;    
+        z-index: 1;
     }
     .ctn{
         height: 100%;
     }
 </style>
-
+<%-include('./partials/flash')%>
 <div class=" ctn bg-dark d-flex pt-lg-5 p-5  flex-wrap justify-content-around " style="min-height: 100vh;">
     <% for(let item of guns){ %>
         <div class="card m-4  " style="width: 18rem; margin-bottom: 20px;max-height: 450px;">
