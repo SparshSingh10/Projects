@@ -1,0 +1,62 @@
+<% layout('layouts/boilerplate') %>
+<%- include('./partials/navbar') %>
+
+<style>
+    .fixed-image-height {
+        max-height: 200px;
+        object-fit: cover;
+    }
+    .card {
+        width: calc(33.33% - 20px); /* 3 cards per row with margin */
+        margin: 0 10px 20px; /* Adjust margin as needed */
+        overflow: hidden;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        background-color: rgb(0, 0, 0);
+        color: white;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        filter: brightness(0.8);
+    }
+    .card:hover {
+        transform: scale(1.05);
+    }
+    .card-body {
+        padding: 20px;
+    }
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: rgb(0, 0, 0);
+        color: white;
+    }
+    .btn {
+        margin: 0;
+    }
+</style>
+<%-include('./partials/flash')%>
+<div class="ctn bg-dark mt-5  pt-lg-5 p-5 flex-wrap justify-content-around" style="min-height: 100vh;">
+    <% for(let item of tweets){ %>
+        <div class="card w-100 ">
+            <div class="card-body p-4">
+                <h5 class="card-title"><%=item.tweetContent%></h5>
+                <hr>
+                <h5 class="card-title">Followers: &nbsp;<%=item.followers%></h5>
+                <h5 class="card-title">Following: &nbsp;<%=item.following%></h5>
+                Posted by<h5 class="card-title"> &nbsp; <%= item.userName %></h5>
+                <p> at<%=item.createdAt%></p>
+            </div>
+            <div class="card-footer">
+                <form action="/tweets/<%=item._id%>?_method=DELETE" method="post">
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </form>
+                <a href="/tweets/<%= item.id %>/edit" class="btn btn-outline-info btn-sm">Edit</a>
+                <a class="btn btn-outline-info btn-sm" href="/tweets/<%= item.id %>">View</a>
+            </div>
+        </div>
+    <% } %>
+</div>

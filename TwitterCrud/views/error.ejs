@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate') %>
+<%- include('partials/navbar') %>
+
+<style>
+  .jumbotron {
+    transform: perspective(500px) rotateX(20deg);
+    background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .jumbotron h1,
+  .jumbotron p {
+    transform: rotateX(-20deg);
+  }
+
+  .alert {
+    transform: perspective(500px) rotateX(5deg);
+    background: linear-gradient(to bottom, #f8d7da, #f5c6cb);
+    padding: 15px;
+    margin-top: 30px;
+  }
+</style>
+
+<div class="container mt-5">
+  <div class="jumbotron">
+    <h1 class="display-4">Oops!Samarth Bhayia Something Went Wrong</h1>
+    <p class="lead">We encountered an error while processing your request.</p>
+    <hr class="my-4">
+    <p><%= err.message %></p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/" role="button">Go to Home</a>
+    </p>
+  </div>
+
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Additional Information:</h4>
+    <p>This error occurred while processing your request on <%= new Date().toLocaleString() %>.</p>
+    <p class="mb-0">Our team has been notified, and we are working to fix this issue. Please try again later.</p>
+  </div>
+</div>
